@@ -33,6 +33,22 @@ public class ApplicationServiceImplTest extends TestCase {
     }
 
     @org.junit.Test
+    public void testStudentEquals_StudentsNotEqual_ReturnFalse() {
+        Student student1 = new Student("A", "B", 20);
+        Student student2 = new Student("C", "D", 19);
+
+        assertFalse(student1.equals(student2));
+    }
+
+    @org.junit.Test
+    public void testStudentEquals_StudentsEqual_ReturnTrue() {
+        Student student1 = new Student("A", "B", 20);
+        Student student2 = new Student("A", "B", 20);
+
+        assertTrue(student1.equals(student2));
+    }
+
+    @org.junit.Test
     public void testGetStudentsOlderThanX_XisBig_EmptyResult() {
         List<Student> list = new ArrayList<Student>();
         for (int i = 0; i < 10; i++) {
@@ -148,10 +164,5 @@ public class ApplicationServiceImplTest extends TestCase {
         List<Student> result = service.editStudentsWithNamesStartingFromE();
 
         assertTrue(result.equals(targetList));
-    }
-
-    public static Test suite()
-    {
-        return new TestSuite( ApplicationServiceImplTest.class );
     }
 }
